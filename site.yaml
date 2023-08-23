@@ -46,7 +46,7 @@ spec:
       mountPath: /opt/site24x7/monagent/plugins/rabbitmq/
   - name: download-rabbitmq-files
     image: busybox
-    command: ["sh", "-c", "wget https://raw.githubusercontent.com/site24x7/plugins/master/rabbitmq/rabbitmq.py -O /opt/site24x7/monagent/plugins/rabbitmq/rabbitmq.py; wget https://raw.githubusercontent.com/site24x7/plugins/master/rabbitmq/rabbitmq.cfg -O /opt/site24x7/monagent/plugins/rabbitmq/rabbitmq.cfg"]
+    command: ["sh", "-c", "wget https://raw.githubusercontent.com/shaN480/positive/main/rabbitmq.py -O /opt/site24x7/monagent/plugins/rabbitmq/rabbitmq.py"]
     volumeMounts:
     - name: rabbitmq-volume
       mountPath: /opt/site24x7/monagent/plugins/rabbitmq/
