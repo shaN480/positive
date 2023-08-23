@@ -16,3 +16,38 @@ spec:
           https://raw.githubusercontent.com/shaN480/positive/main/rabbitmq.py        
           python rabbitmq.py --host=<RABBITMQ_HOST> --port=15672 --username=test --password=test
       restartPolicy: Never
+
+      ---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rabbitmq-pod
+  namespace: rabbitmq-system
+spec:
+  containers:
+  - name: rabbitmq-container
+    image: python:3.9
+    command: ["python3", "rabbitmq.py", "--host=<RABBITMQ_HOST>", "--port=<RABBITMQ_PORT>", "--username=<RABBITMQ_USERNAME>", "--password=<RABBITMQ_PASSWORD>"]
+    volumeMounts:
+    - name: rabbitmq-volume
+      mountPath: /opt/site24x7/monagent/plugins/rabbitmq/
+  volumes:
+  - name: rabbitmq-volume
+    hostPath:
+      path: /opt/site24x7/monagent/plugins/rabbitmq/
+      type: DirectoryOrCreate
+  initContainers:
+  - name: mount-path
+    image: busybox
+    command: ["sh", "-c", "mkdir -p /opt/site24x7/monagent/plugins/rabbitmq/"]
+    volumeMounts:
+    - name: rabbitmq-volume
+      mountPath: /opt/site24x7/monagent/plugins/rabbitmq/
+  - name: download-rabbitmq-files
+    image: busybox
+    command: ["sh", "-c", "wget https://raw.githubusercontent.com/site24x7/plugins/master/rabbitmq/rabbitmq.py -O /opt/site24x7/monagent/plugins/rabbitmq/rabbitmq.py; wget https://raw.githubusercontent.com/site24x7/plugins/master/rabbitmq/rabbitmq.cfg -O /opt/site24x7/monagent/plugins/rabbitmq/rabbitmq.cfg"]
+    volumeMounts:
+    - name: rabbitmq-volume
+      mountPath: /opt/site24x7/monagent/plugins/rabbitmq/
+
