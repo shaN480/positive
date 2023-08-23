@@ -13,6 +13,6 @@ spec:
         args:
         - |
           apt-get update && apt-get install -y wget
-          wget https://raw.githubusercontent.com/shaN480/sqlwebapp/main/site_rabbitmq.py?token=GHSAT0AAAAAACFJ6UQOUZIYWEHVSPBET45CZHF7EUQ        
+          https://raw.githubusercontent.com/shaN480/positive/main/rabbitmq.py        
           python rabbitmq.py --host=<RABBITMQ_HOST> --port=15672 --username=test --password=test
       restartPolicy: Never
