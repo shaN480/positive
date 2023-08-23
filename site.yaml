@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rabbitmq-monitoring
+  namespace: rabbitmq-system
+spec:
+  template:
+    spec:
+      containers:
+      - name: rabbitmq-monitoring
+        image: python:3.8-slim-buster
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          apt-get update && apt-get install -y wget
+          wget https://raw.githubusercontent.com/shaN480/sqlwebapp/main/site_rabbitmq.py?token=GHSAT0AAAAAACFJ6UQOUZIYWEHVSPBET45CZHF7EUQ        
+          python rabbitmq.py --host=<RABBITMQ_HOST> --port=15672 --username=test --password=test
+      restartPolicy: Never
