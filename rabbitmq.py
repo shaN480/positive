@@ -177,7 +177,7 @@ if __name__ == "__main__":
 
     args=parser.parse_args()
 
-    RABBITMQ_HOST='20.253.64.125'
+    RABBITMQ_HOST='20.10.224.2'
     RABBITMQ_PORT="15672"
     RABBITMQ_USERNAME= "admin"
     RABBITMQ_PASSWORD="rabbitmq"
