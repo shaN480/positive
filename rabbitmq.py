@@ -177,10 +177,10 @@ if __name__ == "__main__":
 
     args=parser.parse_args()
 
-    RABBITMQ_HOST='172.177.28.31'
+    RABBITMQ_HOST='20.253.64.125'
     RABBITMQ_PORT="15672"
-    RABBITMQ_USERNAME= "test"
-    RABBITMQ_PASSWORD="test"
+    RABBITMQ_USERNAME= "admin"
+    RABBITMQ_PASSWORD="rabbitmq"
     REALM=args.realm
 
     RABBITMQ_SERVER = "http://"+RABBITMQ_HOST+":"+RABBITMQ_PORT
