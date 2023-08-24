@@ -14,12 +14,12 @@ def metricCollector():
     
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--hostname', help='hostname to be monitored', type=str, nargs='?', default="localhost")
+    parser.add_argument('--hostname', help='hostname to be monitored', type=str, nargs='?', default="172.190.6.53")
     parser.add_argument('--port', help='port to be monitored', type=int, nargs='?', default=15672)
-    parser.add_argument('--username', help='username', type=str, nargs='?', default="guest")
-    parser.add_argument('--password', help='password', type=str, nargs='?', default="guest")
+    parser.add_argument('--username', help='username', type=str, nargs='?', default="admin")
+    parser.add_argument('--password', help='password', type=str, nargs='?', default="rabbitmq")
     parser.add_argument('--vhost', help='virtual host name', type=str, nargs='?', default="/")
-    parser.add_argument('--queue_name', help='queue_name to be monitored', type=str, nargs='?', default="Test Queue")
+    parser.add_argument('--queue_name', help='queue_name to be monitored', type=str, nargs='?', default="test")
     parser.add_argument('--realm', help='realm', nargs='?', default=None)
     
     parser.add_argument('--plugin_version', help='plugin template version', type=int,  nargs='?', default=1)
